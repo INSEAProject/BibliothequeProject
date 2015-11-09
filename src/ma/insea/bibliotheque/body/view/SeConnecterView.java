@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ma.insea.bibliotheque.view.body;
+package ma.insea.bibliotheque.body.view;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import ma.insea.bibliotheque.model.Bibliothequaire;
-import ma.insea.bibliotheque.presenter.body.SeConnecterPresenter;
+import ma.insea.bibliotheque.body.presenter.SeConnecterPresenter;
 
 /**
  *

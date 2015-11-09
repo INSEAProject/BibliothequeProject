@@ -10,10 +10,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -25,11 +22,12 @@ import ma.insea.bibliotheque.DataBase;
  */
 public class FrameView extends JFrame{
     
-    public  static int WIDTH = 600;
+    public  static int WIDTH = 900;
     public  static int HEIGHT = 600;
     
     final JMenuBar menuBar;
     final JPanel body;
+    final JPanel menuLeft;
     
     public FrameView()  {
         setTitle("Bibliotheque");
@@ -38,6 +36,10 @@ public class FrameView extends JFrame{
         body = new JPanel();
         body.setBackground(Color.white);
         add(body, BorderLayout.CENTER);
+        menuLeft = new JPanel();
+        menuLeft.setPreferredSize(new Dimension(150, HEIGHT));
+        menuLeft.setBackground(Color.GRAY);
+        add(menuLeft,BorderLayout.WEST);
         buildFrame();
         addWindowListener(new WindowAdapter() {
 
@@ -76,6 +78,10 @@ public class FrameView extends JFrame{
 
     public JPanel getBody() {
         return body;
+    }
+
+    public JPanel getMenuLeft() {
+        return menuLeft;
     }
 
     

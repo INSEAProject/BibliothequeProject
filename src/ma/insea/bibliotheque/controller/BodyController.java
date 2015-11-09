@@ -6,11 +6,10 @@
 package ma.insea.bibliotheque.controller;
 
 import javax.swing.JPanel;
+import ma.insea.bibliotheque.body.presenter.AdminGestionLivrePresenter;
 import ma.insea.bibliotheque.interfaces.BodyDisplay;
 import ma.insea.bibliotheque.interfaces.BodyPresenter;
-import ma.insea.bibliotheque.model.Bibliothequaire;
-import ma.insea.bibliotheque.presenter.body.IndexPresenter;
-import ma.insea.bibliotheque.presenter.body.SeConnecterPresenter;
+import ma.insea.bibliotheque.body.presenter.SeConnecterPresenter;
 
 /**
  *
@@ -18,22 +17,18 @@ import ma.insea.bibliotheque.presenter.body.SeConnecterPresenter;
  */
 public class BodyController implements ma.insea.bibliotheque.interfaces.BodyController{
 
-    JPanel body;
-    
     public BodyController() {
     }
 
-    public void goIndex(BodyDisplay display,Bibliothequaire bibliothequaire){
-        BodyPresenter presenter = new IndexPresenter(display, bibliothequaire);
-        presenter.go(body);
-    }
+    
 
     @Override
     public void go(JPanel body, BodyDisplay display) {
-        this.body = body;
         BodyPresenter presenter = null;
         if(display instanceof SeConnecterPresenter.Display){
-            presenter = new SeConnecterPresenter(display,this);
+            presenter = new SeConnecterPresenter(display);
+        }else if(display instanceof AdminGestionLivrePresenter.Display){
+            presenter = new AdminGestionLivrePresenter(display);
         }
          
         presenter.go(body); 

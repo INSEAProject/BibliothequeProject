@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ma.insea.bibliotheque.presenter.body;
+package ma.insea.bibliotheque.body.presenter;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import ma.insea.bibliotheque.controller.BodyController;
 import ma.insea.bibliotheque.interfaces.BodyDisplay;
 import ma.insea.bibliotheque.interfaces.BodyPresenter;
 import ma.insea.bibliotheque.model.Bibliothequaire;
-import ma.insea.bibliotheque.view.body.IndexView;
 
 /**
  *
@@ -30,10 +28,9 @@ public class SeConnecterPresenter implements BodyPresenter{
     }
     
     final Display display;
-    BodyController controller;
+    JPanel body;
 
-    public SeConnecterPresenter(BodyDisplay display,BodyController controller) {
-        this.controller = controller;
+    public SeConnecterPresenter(BodyDisplay display) {
         this.display = (Display) display;
         bind();
     }
@@ -43,7 +40,8 @@ public class SeConnecterPresenter implements BodyPresenter{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.goIndex(new IndexView(), display.getBibiothequaire());
+//                BodyPresenter presenter = new IndexPresenter(new IndexView(),display.getBibiothequaire()) ;
+//                presenter.go(body);
             }
         });
         display.getClearButton().addActionListener(new ActionListener() {
@@ -58,6 +56,7 @@ public class SeConnecterPresenter implements BodyPresenter{
     
     @Override
     public void go(JPanel body) {
+        this.body = body;
         body.removeAll();
         body.add(display.getPanel());
         body.validate();
