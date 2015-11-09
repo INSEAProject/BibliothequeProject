@@ -6,9 +6,11 @@
 package ma.insea.bibliotheque;
 
 import javax.swing.SwingUtilities;
+import ma.insea.bibliotheque.body.view.AdminGestionLivreView;
 import ma.insea.bibliotheque.controller.BodyController;
+import ma.insea.bibliotheque.controller.MenuLeftController;
 import ma.insea.bibliotheque.frame.FrameView;
-import ma.insea.bibliotheque.view.body.SeConnecterView;
+import ma.insea.bibliotheque.menuLeft.view.AdminView;
 
 /**
  *
@@ -16,7 +18,7 @@ import ma.insea.bibliotheque.view.body.SeConnecterView;
  */
 public class Bibliotheque {
 
-    static FrameView frame;
+    public static FrameView frame;
     
     
     /**
@@ -29,7 +31,9 @@ public class Bibliotheque {
             public void run() {
                 frame = new FrameView();
                 BodyController controller = new BodyController();
-                controller.go(frame.getBody(),new SeConnecterView());
+                controller.go(frame.getBody(),new AdminGestionLivreView());
+                MenuLeftController menuLeftController = new MenuLeftController();
+                menuLeftController.go(frame.getMenuLeft(),new AdminView());
             }
         });
     }
